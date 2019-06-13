@@ -4,6 +4,8 @@ apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
 
+apply plugin: 'kotlin-kapt'
+
 apply plugin: 'com.github.dcendents.android-maven'
 group='com.github.Muki1992'
 
@@ -23,13 +25,27 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    dataBinding {
+        enabled = true
+    }
+
+    androidExtensions {
+        experimental = true
+    }
+
+    kapt {
+        correctErrorTypes = true
+    }
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'androidx.appcompat:appcompat:1.0.0-beta01'
-    implementation 'androidx.core:core-ktx:1.2.0-alpha02'
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.2'
-    testImplementation 'junit:junit:4.12'
+    implementation 'androidx.appcompat:appcompat:1.0.2'
+    implementation project(":library")
+    implementation 'com.airbnb.android:epoxy:3.0.0'
+    kapt 'com.airbnb.android:epoxy-processor:3.0.0'
+    implementation 'com.airbnb.android:epoxy-databinding:3.0.0'
+
 }
