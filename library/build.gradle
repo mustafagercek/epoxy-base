@@ -53,4 +53,6 @@ dependencies {
     implementation 'com.airbnb.android:epoxy:3.0.0'
     kapt 'com.airbnb.android:epoxy-processor:3.0.0'
     implementation 'com.airbnb.android:epoxy-databinding:3.0.0'
+    // material letters
+    implementation 'com.github.ivbaranov:materiallettericon:0.2.3'
 }

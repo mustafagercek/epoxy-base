@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:app="http://schemas.android.com/apk/res-auto"
+             android:layout_width="match_parent"
+             android:id="@+id/profile_header_model_layout"
+             android:layout_height="192dp">
+
+    <ImageView android:id="@+id/profile_header_model_background_image"
+               android:layout_width="match_parent"
+               android:scaleType="centerCrop"
+               android:layout_height="match_parent"/>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="vertical">
+
+        <com.github.ivbaranov.mli.MaterialLetterIcon
+                android:id="@+id/profile_header_model_icon"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                app:mli_letters_number="2"
+                app:mli_shape_color="?colorPrimary"/>
+
+        <TextView
+                android:id="@+id/profile_header_model_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:gravity="center"
+                android:text="Mustafa Gercek"
+                android:textSize="18sp"/>
+
+        <TextView
+                android:id="@+id/profile_header_model_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:gravity="center"
+                android:text="Mustafa Gercek"/>
+
+    </LinearLayout>
+
+</FrameLayout>
