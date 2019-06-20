@@ -43,7 +43,7 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'androidx.appcompat:appcompat:1.0.2'
-    implementation project(":library")
+    implementation project(':epoxyModels')
     implementation 'com.airbnb.android:epoxy:3.0.0'
     kapt 'com.airbnb.android:epoxy-processor:3.0.0'
     implementation 'com.airbnb.android:epoxy-databinding:3.0.0'
