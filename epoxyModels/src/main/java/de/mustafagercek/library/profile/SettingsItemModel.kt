@@ -3,6 +3,7 @@ package de.mustafagercek.library.profile
 import android.annotation.SuppressLint
 import android.content.Context
 import android.view.View
+import android.view.ViewGroup
 import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.LinearLayout
@@ -14,20 +15,29 @@ import com.airbnb.epoxy.EpoxyModelWithHolder
 import de.mustafagercek.library.R
 import de.mustafagercek.library.R2
 import de.mustafagercek.library.util.KotlinEpoxyHolder
+import de.mustafagercek.library.util.dpToPx
 
 fun Context.settingsItem(
     settingsImageRes: Int,
     settingsText: String,
     actionImageRes: Int? = null,
     backgroundColorRes: Int? = null,
-    listener: View.OnClickListener
+    layoutParams: FrameLayout.LayoutParams? = null,
+    listener: View.OnClickListener,
+    t: Int = 0,
+    b: Int = 0,
+    l: Int = 0,
+    r: Int = 0
 ): SettingsItemModel_ {
+    val params: FrameLayout.LayoutParams =
+        FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
+    params.setMargins(dpToPx(l), dpToPx(t), dpToPx(r), dpToPx(b))
     return SettingsItemModel_().id(settingsText).backgroundColorRes(backgroundColorRes).settingsText(settingsText)
         .settingsImageRes(settingsImageRes)
         .actionImageRes(actionImageRes)
+        .layoutParams(params)
         .listener(listener)
 }
-
 
 @EpoxyModelClass(layout = R2.layout.profile_settings_item_model)
 abstract class SettingsItemModel : EpoxyModelWithHolder<SettingsItemModel.Holder>() {
@@ -47,6 +57,9 @@ abstract class SettingsItemModel : EpoxyModelWithHolder<SettingsItemModel.Holder
     @EpoxyAttribute(EpoxyAttribute.Option.DoNotHash)
     lateinit var listener: View.OnClickListener
 
+    @EpoxyAttribute(EpoxyAttribute.Option.DoNotHash)
+    var layoutParams: FrameLayout.LayoutParams? = null
+
     @SuppressLint("SetTextI18n")
     override fun bind(holder: Holder) {
         super.bind(holder)
@@ -57,7 +70,11 @@ abstract class SettingsItemModel : EpoxyModelWithHolder<SettingsItemModel.Holder
             holder.actionImage.setImageResource(it)
         }
         backgroundColorRes?.let {
-            holder.layout.setBackgroundColor(it)
+            holder.layout.setBackgroundResource(it)
+        }
+        layoutParams?.let {
+            holder.layout.layoutParams = it
+            holder.layout.requestLayout()
         }
 
         holder.layout.setOnClickListener(listener)

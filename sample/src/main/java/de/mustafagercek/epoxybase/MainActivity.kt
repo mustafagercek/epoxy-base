@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity() {
                 settingsText = "Test",
                 actionImageRes = R.drawable.ic_android_black_24dp,
                 settingsImageRes = R.drawable.ic_android_black_24dp,
-                backgroundColorRes = R.color.colorPrimary,
+                backgroundColorRes = R.color.colorAccent,
                 listener = View.OnClickListener {
 
                 }).addTo(this)
@@ -49,6 +49,7 @@ class MainActivity : AppCompatActivity() {
             settingsItem(
                 settingsText = "Test3",
                 settingsImageRes = R.drawable.ic_android_black_24dp,
+                t = 128,
                 listener = View.OnClickListener {
 
                 }).addTo(this)
