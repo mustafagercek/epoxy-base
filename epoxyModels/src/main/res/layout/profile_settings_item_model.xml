@@ -21,8 +21,8 @@
 
         <ImageView
                 android:id="@+id/profile_settings_item_start_image"
-                android:layout_width="32dp"
-                android:layout_height="32dp"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
                 android:layout_gravity="center"
                 android:tint="#202020"/>
 

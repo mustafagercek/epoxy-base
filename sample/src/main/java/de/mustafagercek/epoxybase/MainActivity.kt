@@ -25,8 +25,9 @@ class MainActivity : AppCompatActivity() {
             profileHeader(
                 "AA",
                 "la",
-                backgroundImageRes = R.drawable.profile_background,
+                backgroundImageRes = R.drawable.pattern,
                 textColorRes = R.color.colorAccent,
+                headerBackgroundColorRes = R.color.colorPrimary,
                 iconBackgroundColorRes = R.color.colorPrimary
             ).addTo(this)
 
@@ -56,7 +57,7 @@ class MainActivity : AppCompatActivity() {
 
             textModel("Center", type = Type.TITLE, gravity = Gravity.CENTER).addTo(this)
             imageModel(R.drawable.ic_no_appointments, w = 78, h = 78, t = 32).addTo(this)
-            textModel("Start", type = Type.REGULAR, gravity = Gravity.START).addTo(this)
+            textModel("Start").addTo(this)
             imageModel(R.drawable.ic_android_black_24dp, click = View.OnClickListener {
                 Toast.makeText(this@MainActivity, "Hello", Toast.LENGTH_LONG).show()
             }, gravity = Gravity.END, id = 22).addTo(this)
