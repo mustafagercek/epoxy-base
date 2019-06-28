@@ -38,10 +38,12 @@ fun Context.imageModel(
     gravity: Int = Gravity.CENTER,
     id: Int = res
 ): ImageRowModel_ {
-    val params: FrameLayout.LayoutParams = FrameLayout.LayoutParams(dpToPx(w), dpToPx(h))
-    params.setMargins(dpToPx(l), dpToPx(t), dpToPx(r), dpToPx(b))
-    params.gravity = gravity
-    return ImageRowModel_().listener(click).imageResource(res).imageLayoutParams(params).imageViewTint(tint).id(id)
+    val imageParams: FrameLayout.LayoutParams = FrameLayout.LayoutParams(dpToPx(w), dpToPx(h))
+    val layoutParams: FrameLayout.LayoutParams =
+        FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
+    layoutParams.setMargins(dpToPx(l), dpToPx(t), dpToPx(r), dpToPx(b))
+    imageParams.gravity = gravity
+    return ImageRowModel_().listener(click).imageResource(res).imageLayoutParams(imageParams).frameLayoutParams(layoutParams).imageViewTint(tint).id(id)
 }
 
 
@@ -60,6 +62,9 @@ abstract class ImageRowModel : EpoxyModelWithHolder<ImageRowModel.Holder>() {
     var imageLayoutParams: FrameLayout.LayoutParams? = null
 
     @EpoxyAttribute(EpoxyAttribute.Option.DoNotHash)
+    var frameLayoutParams: FrameLayout.LayoutParams? = null
+
+    @EpoxyAttribute(EpoxyAttribute.Option.DoNotHash)
     var listener: View.OnClickListener? = null
 
     @SuppressLint("SetTextI18n")
@@ -76,7 +81,11 @@ abstract class ImageRowModel : EpoxyModelWithHolder<ImageRowModel.Holder>() {
         }
 
         imageLayoutParams?.let {
-            holder.imageView.layoutParams = it
+                        holder.imageView.layoutParams = it
+        }
+
+        frameLayoutParams?.let {
+            holder.frame.layoutParams = it
         }
 
         listener?.let {
@@ -94,6 +103,7 @@ abstract class ImageRowModel : EpoxyModelWithHolder<ImageRowModel.Holder>() {
 
     class Holder : KotlinEpoxyHolder() {
         val imageView by bind<ImageView>(R.id.imageView)
+        val frame by bind<FrameLayout>(R.id.frame)
     }
 
 }

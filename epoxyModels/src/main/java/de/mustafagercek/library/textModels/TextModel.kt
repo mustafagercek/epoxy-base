@@ -12,6 +12,7 @@ import android.graphics.Typeface
 import android.view.Gravity
 import android.view.ViewGroup
 import androidx.annotation.FontRes
+import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
 import de.mustafagercek.library.R
 import de.mustafagercek.library.R2
@@ -76,7 +77,7 @@ abstract class TextModel : EpoxyModelWithHolder<TextModel.Holder>() {
 
         holder.textView.text = text
         holder.textView.setTextSize(TypedValue.COMPLEX_UNIT_SP, textSize)
-        holder.textView.setTextColor(textColor)
+        holder.textView.setTextColor(ContextCompat.getColor(context, textColor))
 
         layoutParams?.let {
             holder.textView.layoutParams = it
