@@ -10,6 +10,7 @@ import com.airbnb.epoxy.EpoxyModelClass
 import com.airbnb.epoxy.EpoxyModelWithHolder
 import android.graphics.Typeface
 import android.view.Gravity
+import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.FontRes
 import androidx.core.content.ContextCompat
@@ -31,6 +32,7 @@ fun Context.textModel(
     w: Int = ViewGroup.LayoutParams.MATCH_PARENT,
     gravity: Int = Gravity.START,
     ts: Float = type?.ts ?: 14f,
+    listener: View.OnClickListener? = null,
     font: Int? = type?.font,
     tc: Int = type?.tc ?: R.color.textDefault
 ): TextModel_ {
@@ -66,6 +68,9 @@ abstract class TextModel : EpoxyModelWithHolder<TextModel.Holder>() {
     @EpoxyAttribute
     var fontPath: String? = null
 
+    @EpoxyAttribute(EpoxyAttribute.Option.DoNotHash)
+    var listener: View.OnClickListener? = null
+
     @FontRes
     @EpoxyAttribute
     var fontRes: Int? = null
@@ -95,6 +100,12 @@ abstract class TextModel : EpoxyModelWithHolder<TextModel.Holder>() {
         fontRes?.let {
             val typeFace = ResourcesCompat.getFont(context, it)
             holder.textView.typeface = typeFace
+        }
+
+        listener?.let {
+            holder.textView.setOnClickListener(listener)
+            holder.textView.isFocusable = true
+            holder.textView.isClickable = true
         }
 
     }
