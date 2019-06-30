@@ -38,7 +38,7 @@ fun Context.textModel(
 ): TextModel_ {
     val params: LinearLayout.LayoutParams = LinearLayout.LayoutParams(w, h)
     params.setMargins(dpToPx(l), dpToPx(t), dpToPx(r), dpToPx(b))
-    return TextModel_().id(text).fontRes(font).textSize(ts).text(text).textColor(tc).textGravity(gravity)
+    return TextModel_().id(text).listener(listener).fontRes(font).textSize(ts).text(text).textColor(tc).textGravity(gravity)
         .layoutParams(params)
 }
 
