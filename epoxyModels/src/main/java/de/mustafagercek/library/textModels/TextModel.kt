@@ -34,11 +34,14 @@ fun Context.textModel(
     ts: Float = type?.ts ?: 14f,
     listener: View.OnClickListener? = null,
     font: Int? = type?.font,
+    backgroundColor: Int? = null,
     tc: Int = type?.tc ?: R.color.textDefault
 ): TextModel_ {
     val params: LinearLayout.LayoutParams = LinearLayout.LayoutParams(w, h)
     params.setMargins(dpToPx(l), dpToPx(t), dpToPx(r), dpToPx(b))
-    return TextModel_().id(text).listener(listener).fontRes(font).textSize(ts).text(text).textColor(tc).textGravity(gravity)
+    return TextModel_().id(text).backgroundColor(backgroundColor).listener(listener).fontRes(font).textSize(ts)
+        .text(text).textColor(tc)
+        .textGravity(gravity)
         .layoutParams(params)
 }
 
@@ -61,6 +64,9 @@ abstract class TextModel : EpoxyModelWithHolder<TextModel.Holder>() {
     var textSize: Float = 20f
     @EpoxyAttribute
     var textColor: Int = 0
+
+    @EpoxyAttribute
+    var backgroundColor: Int? = null
 
     @EpoxyAttribute
     var textGravity: Int? = null
@@ -88,6 +94,10 @@ abstract class TextModel : EpoxyModelWithHolder<TextModel.Holder>() {
             holder.textView.layoutParams = it
         }
 
+        backgroundColor?.let {
+            holder.layout.setBackgroundColor(it)
+        }
+
         textGravity?.let {
             holder.textView.gravity = it
         }
@@ -112,6 +122,8 @@ abstract class TextModel : EpoxyModelWithHolder<TextModel.Holder>() {
 
     class Holder : KotlinEpoxyHolder() {
         val textView by bind<TextView>(R.id.text_view)
+        val layout by bind<LinearLayout>(R.id.layout)
+
     }
 
 }

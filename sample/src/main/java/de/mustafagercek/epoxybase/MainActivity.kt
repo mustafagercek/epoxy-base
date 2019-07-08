@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.Gravity
 import android.view.View
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import de.mustafagercek.epoxybase.databinding.ActivityMainBinding
 import de.mustafagercek.library.imageModels.imageModel
@@ -55,7 +56,7 @@ class MainActivity : AppCompatActivity() {
 
                 }).addTo(this)
 
-            textModel("Center", type = Type.TITLE, gravity = Gravity.CENTER).addTo(this)
+            textModel("Center", type = Type.TITLE, gravity = Gravity.CENTER,backgroundColor = ContextCompat.getColor(this@MainActivity,R.color.colorPrimary)).addTo(this)
             imageModel(R.drawable.ic_no_appointments, w = 78, h = 78, t = 32).addTo(this)
             textModel("Start").addTo(this)
             imageModel(R.drawable.ic_android_black_24dp, click = View.OnClickListener {
