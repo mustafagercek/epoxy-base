@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import de.mustafagercek.epoxybase.databinding.ActivityMainBinding
+import de.mustafagercek.library.button.buttonModel
 import de.mustafagercek.library.imageModels.imageModel
 import de.mustafagercek.library.profile.profileHeader
 import de.mustafagercek.library.profile.settingsItem
@@ -23,6 +24,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         binding.recyclerView.withModels {
+
+            buttonModel("Test",click = View.OnClickListener { "Test" },r = 10,l = 42).addTo(this)
+
             profileHeader(
                 "AA",
                 "la",

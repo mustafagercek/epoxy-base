@@ -54,4 +54,7 @@ dependencies {
     implementation 'com.airbnb.android:epoxy-databinding:3.0.0'
     // material letters
     implementation 'com.github.ivbaranov:materiallettericon:0.2.3'
+
+    implementation 'com.github.Muki1992:MaterialLoadingButton:2.0'
+
 }
