@@ -30,7 +30,7 @@ fun Context.buttonModel(
     click: View.OnClickListener,
     isEnabled: Boolean = true,
     buttonColor: Int? = null,
-    buttonBackgroundColor: Int? = null,
+    textColor: Int? = null,
     gravity: Int = Gravity.CENTER,
     id: String = buttonText
 ): MaterialLoadingButtonModel_ {
@@ -39,7 +39,9 @@ fun Context.buttonModel(
         FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
     layoutParams.setMargins(dpToPx(l), dpToPx(t), dpToPx(r), dpToPx(b))
     buttonParams.gravity = gravity
-    return MaterialLoadingButtonModel_().buttonText(buttonText).listener(click).isButtonEnabled(isEnabled).backgroundColor(buttonBackgroundColor)
+    return MaterialLoadingButtonModel_().buttonText(buttonText).listener(click).isButtonEnabled(isEnabled)
+        .backgroundColor(buttonColor)
+        .textColor(textColor)
         .frameLayoutLayoutParams(layoutParams).id(id)
 }
 
