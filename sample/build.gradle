@@ -9,7 +9,7 @@ apply plugin: 'kotlin-kapt'
 android {
     compileSdkVersion 28
     defaultConfig {
-        applicationId "de.mustafagercek.epoxy_base"
+        applicationId "de.mustafagercek.epoxybase_sample"
         minSdkVersion 23
         targetSdkVersion 28
         versionCode 1

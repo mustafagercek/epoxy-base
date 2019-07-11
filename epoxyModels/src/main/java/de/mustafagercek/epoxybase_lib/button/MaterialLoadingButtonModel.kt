@@ -1,4 +1,4 @@
-package de.mustafagercek.library.button
+package de.mustafagercek.epoxybase_lib.button
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -11,11 +11,10 @@ import androidx.core.content.ContextCompat
 import com.airbnb.epoxy.EpoxyAttribute
 import com.airbnb.epoxy.EpoxyModelClass
 import com.airbnb.epoxy.EpoxyModelWithHolder
-import de.mustafagercek.library.R
-import de.mustafagercek.library.R2
-import de.mustafagercek.library.imageModels.ImageRowModel_
-import de.mustafagercek.library.util.KotlinEpoxyHolder
-import de.mustafagercek.library.util.dpToPx
+import de.mustafagercek.epoxybase_lib.R
+import de.mustafagercek.epoxybase_lib.R2
+import de.mustafagercek.epoxybase_lib.util.KotlinEpoxyHolder
+import de.mustafagercek.epoxybase_lib.util.dpToPx
 import de.mustafagercek.materialloadingbutton.LoadingButton
 
 

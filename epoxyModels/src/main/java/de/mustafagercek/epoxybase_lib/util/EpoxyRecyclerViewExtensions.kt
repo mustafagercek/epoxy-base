@@ -1,4 +1,4 @@
-package de.mustafagercek.library.util
+package de.mustafagercek.epoxybase_lib.util
 
 import com.airbnb.epoxy.EpoxyController
 import com.airbnb.epoxy.EpoxyRecyclerView

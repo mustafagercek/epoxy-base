@@ -1,4 +1,4 @@
-package de.mustafagercek.library.profile
+package de.mustafagercek.epoxybase_lib.profile
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -11,9 +11,9 @@ import android.widget.FrameLayout
 import android.widget.ImageView
 import androidx.core.content.ContextCompat
 import com.github.ivbaranov.mli.MaterialLetterIcon
-import de.mustafagercek.library.R
-import de.mustafagercek.library.R2
-import de.mustafagercek.library.util.KotlinEpoxyHolder
+import de.mustafagercek.epoxybase_lib.R
+import de.mustafagercek.epoxybase_lib.R2
+import de.mustafagercek.epoxybase_lib.util.KotlinEpoxyHolder
 
 fun Context.profileHeader(
     letterText: String,

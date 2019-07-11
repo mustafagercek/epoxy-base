@@ -1,4 +1,4 @@
-package de.mustafagercek.library.util
+package de.mustafagercek.epoxybase_lib.util
 
 import android.view.View
 import com.airbnb.epoxy.EpoxyHolder

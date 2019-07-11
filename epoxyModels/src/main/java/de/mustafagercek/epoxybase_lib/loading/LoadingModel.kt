@@ -1,10 +1,10 @@
-package de.mustafagercek.library.loading
+package de.mustafagercek.epoxybase_lib.loading
 
 import android.content.Context
 import android.util.AttributeSet
 import android.widget.FrameLayout
 import com.airbnb.epoxy.*
-import de.mustafagercek.library.R2
+import de.mustafagercek.epoxybase_lib.R2
 
 fun Context.loadingModel(): LoadingViewModel_ {
     return LoadingViewModel_().id("loading")

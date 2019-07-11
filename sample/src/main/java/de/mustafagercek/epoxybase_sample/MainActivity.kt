@@ -1,4 +1,4 @@
-package de.mustafagercek.epoxybase
+package de.mustafagercek.epoxybase_sample
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -7,14 +7,14 @@ import android.view.View
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
-import de.mustafagercek.epoxybase.databinding.ActivityMainBinding
-import de.mustafagercek.library.button.buttonModel
-import de.mustafagercek.library.imageModels.imageModel
-import de.mustafagercek.library.profile.profileHeader
-import de.mustafagercek.library.profile.settingsItem
-import de.mustafagercek.library.textModels.Type
-import de.mustafagercek.library.textModels.textModel
-import de.mustafagercek.library.util.withModels
+import de.mustafagercek.epoxybase_sample.databinding.ActivityMainBinding
+import de.mustafagercek.epoxybase_lib.button.buttonModel
+import de.mustafagercek.epoxybase_lib.imageModels.imageModel
+import de.mustafagercek.epoxybase_lib.profile.profileHeader
+import de.mustafagercek.epoxybase_lib.profile.settingsItem
+import de.mustafagercek.epoxybase_lib.textModels.Type
+import de.mustafagercek.epoxybase_lib.textModels.textModel
+import de.mustafagercek.epoxybase_lib.util.withModels
 
 class MainActivity : AppCompatActivity() {
 

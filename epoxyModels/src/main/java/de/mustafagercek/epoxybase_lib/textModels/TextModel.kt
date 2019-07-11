@@ -1,4 +1,4 @@
-package de.mustafagercek.library.textModels
+package de.mustafagercek.epoxybase_lib.textModels
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -15,10 +15,10 @@ import android.view.ViewGroup
 import androidx.annotation.FontRes
 import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
-import de.mustafagercek.library.R
-import de.mustafagercek.library.R2
-import de.mustafagercek.library.util.KotlinEpoxyHolder
-import de.mustafagercek.library.util.dpToPx
+import de.mustafagercek.epoxybase_lib.R
+import de.mustafagercek.epoxybase_lib.R2
+import de.mustafagercek.epoxybase_lib.util.KotlinEpoxyHolder
+import de.mustafagercek.epoxybase_lib.util.dpToPx
 
 
 fun Context.textModel(

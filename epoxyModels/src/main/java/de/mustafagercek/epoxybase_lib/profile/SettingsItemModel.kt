@@ -1,4 +1,4 @@
-package de.mustafagercek.library.profile
+package de.mustafagercek.epoxybase_lib.profile
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -6,16 +6,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
 import android.widget.ImageView
-import android.widget.LinearLayout
 import android.widget.TextView
-import androidx.core.content.ContextCompat
 import com.airbnb.epoxy.EpoxyAttribute
 import com.airbnb.epoxy.EpoxyModelClass
 import com.airbnb.epoxy.EpoxyModelWithHolder
-import de.mustafagercek.library.R
-import de.mustafagercek.library.R2
-import de.mustafagercek.library.util.KotlinEpoxyHolder
-import de.mustafagercek.library.util.dpToPx
+import de.mustafagercek.epoxybase_lib.R
+import de.mustafagercek.epoxybase_lib.R2
+import de.mustafagercek.epoxybase_lib.util.KotlinEpoxyHolder
+import de.mustafagercek.epoxybase_lib.util.dpToPx
 
 fun Context.settingsItem(
     settingsImageRes: Int,

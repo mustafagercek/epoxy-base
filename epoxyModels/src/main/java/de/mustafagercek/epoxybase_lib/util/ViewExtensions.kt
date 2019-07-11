@@ -1,4 +1,4 @@
-package de.mustafagercek.library.util
+package de.mustafagercek.epoxybase_lib.util
 
 import android.content.Context
 import android.util.TypedValue
