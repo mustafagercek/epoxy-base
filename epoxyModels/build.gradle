@@ -57,4 +57,5 @@ dependencies {
 
     implementation 'com.github.Muki1992:MaterialLoadingButton:2.0'
 
+    implementation 'com.airbnb.android:lottie:3.0.0'
 }

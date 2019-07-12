@@ -1,5 +1,6 @@
 package de.mustafagercek.epoxybase_sample
 
+import android.animation.ObjectAnimator
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Gravity
@@ -10,6 +11,7 @@ import androidx.databinding.DataBindingUtil
 import de.mustafagercek.epoxybase_lib.button.buttonModel
 import de.mustafagercek.epoxybase_lib.imageModels.imageModel
 import de.mustafagercek.epoxybase_lib.loading.loadingModel
+import de.mustafagercek.epoxybase_lib.lottie.lottieRowModel
 import de.mustafagercek.epoxybase_lib.profile.profileHeader
 import de.mustafagercek.epoxybase_lib.profile.settingsItem
 import de.mustafagercek.epoxybase_lib.textModels.Type
@@ -27,9 +29,19 @@ class MainActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         binding.recyclerView.withModels {
 
+            lottieRowModel(
+                R.raw.no_provider_close_by,
+                w = 152,
+                h = 152,
+                gravity = Gravity.CENTER,
+                speed = 3f,
+                repeatCount = ObjectAnimator.INFINITE,
+                repeatMode = ObjectAnimator.REVERSE
+            ).addTo(this)
+
             loadingModel().addTo(this)
 
-            buttonModel("Test",click = View.OnClickListener { "Test" },r = 10,l = 42).addTo(this)
+            buttonModel("Test", click = View.OnClickListener { "Test" }, r = 10, l = 42).addTo(this)
 
             profileHeader(
                 "AA",
@@ -64,7 +76,12 @@ class MainActivity : AppCompatActivity() {
 
                 }).addTo(this)
 
-            textModel("Center", type = Type.TITLE, gravity = Gravity.CENTER,backgroundColor = ContextCompat.getColor(this@MainActivity,R.color.colorPrimary)).addTo(this)
+            textModel(
+                "Center",
+                type = Type.TITLE,
+                gravity = Gravity.CENTER,
+                backgroundColor = ContextCompat.getColor(this@MainActivity, R.color.colorPrimary)
+            ).addTo(this)
             imageModel(R.drawable.ic_no_appointments, w = 78, h = 78, t = 32).addTo(this)
             textModel("Start").addTo(this)
             imageModel(R.drawable.ic_android_black_24dp, click = View.OnClickListener {
