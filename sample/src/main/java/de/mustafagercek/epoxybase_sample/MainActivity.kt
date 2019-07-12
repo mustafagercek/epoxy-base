@@ -7,13 +7,15 @@ import android.view.View
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
-import de.mustafagercek.epoxybase_sample.databinding.ActivityMainBinding
 import de.mustafagercek.epoxybase_lib.button.buttonModel
 import de.mustafagercek.epoxybase_lib.imageModels.imageModel
+import de.mustafagercek.epoxybase_lib.loading.loadingModel
 import de.mustafagercek.epoxybase_lib.profile.profileHeader
 import de.mustafagercek.epoxybase_lib.profile.settingsItem
 import de.mustafagercek.epoxybase_lib.textModels.Type
 import de.mustafagercek.epoxybase_lib.textModels.textModel
+import de.mustafagercek.epoxybase_sample.databinding.ActivityMainBinding
+
 import de.mustafagercek.epoxybase_lib.util.withModels
 
 class MainActivity : AppCompatActivity() {
@@ -24,6 +26,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         binding.recyclerView.withModels {
+
+            loadingModel().addTo(this)
 
             buttonModel("Test",click = View.OnClickListener { "Test" },r = 10,l = 42).addTo(this)
 
