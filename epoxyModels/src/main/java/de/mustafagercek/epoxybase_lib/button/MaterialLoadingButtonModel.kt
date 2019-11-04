@@ -30,6 +30,8 @@ fun Context.buttonModel(
     isEnabled: Boolean = true,
     buttonColor: Int? = null,
     textColor: Int? = null,
+    buttonColorRes: Int? = null,
+    textColorRes: Int? = null,
     gravity: Int = Gravity.CENTER,
     id: String = buttonText
 ): MaterialLoadingButtonModel_ {
@@ -39,8 +41,10 @@ fun Context.buttonModel(
     layoutParams.setMargins(dpToPx(l), dpToPx(t), dpToPx(r), dpToPx(b))
     buttonParams.gravity = gravity
     return MaterialLoadingButtonModel_().buttonText(buttonText).listener(click).isButtonEnabled(isEnabled)
-        .backgroundColor(buttonColor)
+        .backgroundColorRes(buttonColorRes)
+        .buttonColor(buttonColor)
         .textColor(textColor)
+        .textColorRes(textColorRes)
         .frameLayoutLayoutParams(layoutParams).id(id)
 }
 
@@ -56,17 +60,25 @@ abstract class MaterialLoadingButtonModel : EpoxyModelWithHolder<MaterialLoading
     lateinit var buttonText: String
 
     @JvmField
-    @EpoxyAttribute
+    @EpoxyAttribute(EpoxyAttribute.Option.DoNotHash)
     var isButtonEnabled: Boolean = true
 
     @JvmField
-    @EpoxyAttribute
+    @EpoxyAttribute(EpoxyAttribute.Option.DoNotHash)
     @ColorRes
-    var backgroundColor: Int? = null
+    var backgroundColorRes: Int? = null
 
     @JvmField
-    @EpoxyAttribute
+    @EpoxyAttribute(EpoxyAttribute.Option.DoNotHash)
     @ColorRes
+    var textColorRes: Int? = null
+
+    @JvmField
+    @EpoxyAttribute(EpoxyAttribute.Option.DoNotHash)
+    var buttonColor: Int? = null
+
+    @JvmField
+    @EpoxyAttribute(EpoxyAttribute.Option.DoNotHash)
     var textColor: Int? = null
 
     @JvmField
@@ -82,15 +94,23 @@ abstract class MaterialLoadingButtonModel : EpoxyModelWithHolder<MaterialLoading
         val context = holder.button.context
 
         holder.button.setButtonOnClick(listener)
-        textColor?.let {
+        textColorRes?.let {
             holder.button.setTextColor(ContextCompat.getColor(context, it))
+        } ?: run {
+            textColor?.let {
+                holder.button.setTextColor(it)
+            }
         }
 
         holder.button.setButtonText(buttonText)
         holder.button.setButtonEnabled(isButtonEnabled)
 
-        backgroundColor?.let {
+        backgroundColorRes?.let {
             holder.button.setButtonColor(ContextCompat.getColor(context, it))
+        } ?: run {
+            buttonColor?.let {
+                holder.button.setButtonColor(it)
+            }
         }
 
         frameLayoutLayoutParams?.let {

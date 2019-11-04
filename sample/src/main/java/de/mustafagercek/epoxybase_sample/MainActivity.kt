@@ -42,7 +42,7 @@ class MainActivity : AppCompatActivity() {
 
             loadingModel().addTo(this)
 
-            buttonModel("Test", click = View.OnClickListener { "Test" }, r = 10, l = 42).addTo(this)
+            buttonModel("Test", click = View.OnClickListener { "Test" }, r = 10, l = 42,buttonColor = ContextCompat.getColor(this@MainActivity,R.color.colorPrimary)).addTo(this)
 
             heightSpacing(77, "h1").addTo(this)
 
