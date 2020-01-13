@@ -34,6 +34,7 @@ fun Context.textModel(
     ts: Float = type?.ts ?: 14f,
     listener: View.OnClickListener? = null,
     font: Int? = type?.font,
+    typeface: Int = Typeface.BOLD,
     backgroundColor: Int? = null,
     tc: Int = type?.tc ?: R.color.textDefault
 ): TextModel_ {
@@ -42,6 +43,7 @@ fun Context.textModel(
     return TextModel_().id(text).backgroundColor(backgroundColor).listener(listener).fontRes(font).textSize(ts)
         .text(text).textColor(tc)
         .textGravity(gravity)
+        .typeface(typeface)
         .layoutParams(params)
 }
 
@@ -67,6 +69,9 @@ abstract class TextModel : EpoxyModelWithHolder<TextModel.Holder>() {
 
     @EpoxyAttribute
     var backgroundColor: Int? = null
+
+    @EpoxyAttribute
+    var typeface: Int = Typeface.BOLD
 
     @EpoxyAttribute
     var textGravity: Int? = null
@@ -110,6 +115,10 @@ abstract class TextModel : EpoxyModelWithHolder<TextModel.Holder>() {
         fontRes?.let {
             val typeFace = ResourcesCompat.getFont(context, it)
             holder.textView.typeface = typeFace
+        }
+
+        typeface?.let {
+            holder.textView.setTypeface(holder.textView.typeface,it)
         }
 
         listener?.let {

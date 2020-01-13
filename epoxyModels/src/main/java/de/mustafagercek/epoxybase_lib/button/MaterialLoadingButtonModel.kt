@@ -35,11 +35,10 @@ fun Context.buttonModel(
     gravity: Int = Gravity.CENTER,
     id: String = buttonText
 ): MaterialLoadingButtonModel_ {
-    val buttonParams: FrameLayout.LayoutParams = FrameLayout.LayoutParams(dpToPx(w), dpToPx(h))
     val layoutParams: FrameLayout.LayoutParams =
-        FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
+        FrameLayout.LayoutParams(w, h)
     layoutParams.setMargins(dpToPx(l), dpToPx(t), dpToPx(r), dpToPx(b))
-    buttonParams.gravity = gravity
+    layoutParams.gravity = gravity
     return MaterialLoadingButtonModel_().buttonText(buttonText).listener(click).isButtonEnabled(isEnabled)
         .backgroundColorRes(buttonColorRes)
         .buttonColor(buttonColor)

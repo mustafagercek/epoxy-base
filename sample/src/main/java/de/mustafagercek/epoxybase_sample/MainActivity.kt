@@ -1,10 +1,12 @@
 package de.mustafagercek.epoxybase_sample
 
 import android.animation.ObjectAnimator
+import android.graphics.Typeface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Gravity
 import android.view.View
+import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
@@ -30,6 +32,10 @@ class MainActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         binding.recyclerView.withModels {
 
+            textModel("BOLD",typeface = Typeface.BOLD).addTo(this)
+            textModel("DEFAULT",typeface = Typeface.NORMAL).addTo(this)
+            textModel("ITALIC",typeface = Typeface.ITALIC).addTo(this)
+
             lottieRowModel(
                 R.raw.no_provider_close_by,
                 w = 152,
@@ -43,6 +49,10 @@ class MainActivity : AppCompatActivity() {
             loadingModel().addTo(this)
 
             buttonModel("Test", click = View.OnClickListener { "Test" }, r = 10, l = 42,buttonColor = ContextCompat.getColor(this@MainActivity,R.color.colorPrimary)).addTo(this)
+
+
+            buttonModel("Test gewrapped", click = View.OnClickListener { "Test" },w = ViewGroup.LayoutParams.WRAP_CONTENT, r = 10, l = 42,buttonColor = ContextCompat.getColor(this@MainActivity,R.color.colorPrimary)).addTo(this)
+
 
             heightSpacing(77, "h1").addTo(this)
 
