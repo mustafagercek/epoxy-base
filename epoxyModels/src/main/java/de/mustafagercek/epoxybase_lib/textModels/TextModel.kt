@@ -34,7 +34,7 @@ fun Context.textModel(
     ts: Float = type?.ts ?: 14f,
     listener: View.OnClickListener? = null,
     font: Int? = type?.font,
-    typeface: Int = Typeface.BOLD,
+    typeface: Int = Typeface.NORMAL,
     backgroundColor: Int? = null,
     tc: Int = type?.tc ?: R.color.textDefault
 ): TextModel_ {
