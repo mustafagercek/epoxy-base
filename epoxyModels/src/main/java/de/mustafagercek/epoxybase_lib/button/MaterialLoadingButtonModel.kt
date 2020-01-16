@@ -30,6 +30,7 @@ fun Context.buttonModel(
     isEnabled: Boolean = true,
     buttonColor: Int? = null,
     textColor: Int? = null,
+    isLoading: Boolean = false,
     buttonColorRes: Int? = null,
     textColorRes: Int? = null,
     gravity: Int = Gravity.CENTER,
@@ -44,6 +45,7 @@ fun Context.buttonModel(
         .buttonColor(buttonColor)
         .textColor(textColor)
         .textColorRes(textColorRes)
+        .isLoading(isLoading)
         .frameLayoutLayoutParams(layoutParams).id(id)
 }
 
@@ -59,7 +61,7 @@ abstract class MaterialLoadingButtonModel : EpoxyModelWithHolder<MaterialLoading
     lateinit var buttonText: String
 
     @JvmField
-    @EpoxyAttribute(EpoxyAttribute.Option.DoNotHash)
+    @EpoxyAttribute
     var isButtonEnabled: Boolean = true
 
     @JvmField
@@ -81,7 +83,8 @@ abstract class MaterialLoadingButtonModel : EpoxyModelWithHolder<MaterialLoading
     var textColor: Int? = null
 
     @JvmField
-    public var buttonViewHolder: MaterialLoadingButtonModel.Holder? = null
+    @EpoxyAttribute
+    var isLoading: Boolean = false
 
     @EpoxyAttribute(EpoxyAttribute.Option.DoNotHash)
     var frameLayoutLayoutParams: FrameLayout.LayoutParams? = null
@@ -89,7 +92,6 @@ abstract class MaterialLoadingButtonModel : EpoxyModelWithHolder<MaterialLoading
     @SuppressLint("SetTextI18n")
     override fun bind(holder: Holder) {
         super.bind(holder)
-        buttonViewHolder = holder
         val context = holder.button.context
 
         holder.button.setButtonOnClick(listener)
@@ -102,7 +104,14 @@ abstract class MaterialLoadingButtonModel : EpoxyModelWithHolder<MaterialLoading
         }
 
         holder.button.setButtonText(buttonText)
+
         holder.button.setButtonEnabled(isButtonEnabled)
+
+        if (isLoading) {
+            holder.button.onStartLoading()
+        } else {
+            holder.button.onStopLoading()
+        }
 
         backgroundColorRes?.let {
             holder.button.setButtonColor(ContextCompat.getColor(context, it))
@@ -118,15 +127,9 @@ abstract class MaterialLoadingButtonModel : EpoxyModelWithHolder<MaterialLoading
 
     }
 
-    override fun unbind(holder: MaterialLoadingButtonModel.Holder) {
-        this.buttonViewHolder = null
-        super.unbind(holder)
-
-    }
-
     class Holder : KotlinEpoxyHolder() {
         val button by bind<LoadingButton>(R.id.button)
-        val layout by bind<LoadingButton>(R.id.layout)
+        val layout by bind<FrameLayout>(R.id.layout)
 
     }
 }
