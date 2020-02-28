@@ -9,7 +9,6 @@ This is exactly the basic idea behind epoxy.  This library offers a basic set of
 Prerequisite for the use of these is programming in Kotlin
 
 ## Basic Usage
-If you use xml layouts without databinding you can create a model class to do the  binding.
 
 ```kotlin
 class MainActivity : AppCompatActivity() {
