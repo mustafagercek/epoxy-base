@@ -4,30 +4,9 @@ Often one develops many things twice that one could unify.
 
 This is exactly the basic idea behind epoxy.  This library offers a basic set of epoxy models, which are often used like texts, pictures and buttons. 
 
-![](samplegif.gif)
+![](showcase.gif)
 
 Prerequisite for the use of these is programming in Kotlin
-
-## Installation
-
-Gradle is the only supported build configuration, so just add the dependency to your project `build.gradle` file:
-
-```groovy
-dependencies {
-  implementation 'com.github.Muki1992:epoxy-base:1.x.x'
-  implementation 'com.airbnb.android:epoxy:3.0.0'
-  kapt 'com.airbnb.android:epoxy-processor:3.0.0'
-  implementation 'com.airbnb.android:epoxy-databinding:3.0.0'
-}
-```
-In order for Kotlin to work properly add to the build.gradle
-```
-apply plugin: 'kotlin-kapt'
-
-kapt {
-    correctErrorTypes = true
-}
-```
 
 ## Basic Usage
 If you use xml layouts without databinding you can create a model class to do the  binding.
@@ -69,5 +48,39 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+}
+```
+
+## Current Models
+
+- TextModel
+- ButtonModel (with the use of [MaterialLoadingButton](https://github.com/Muki1992/MaterialLoadingButton))
+- ImageModel
+- LoadingModel
+- SpacingModel
+- ProfileHeaderModel and SettingsItemModels
+
+### Styling
+
+The library tires to provide as many styling options as possible. From coloring (background, foreground) and spacing (left,right,top,bottom) to sizing and positioning.
+
+## Installation
+
+Gradle is the only supported build configuration, so just add the dependency to your project `build.gradle` file:
+
+```groovy
+dependencies {
+  implementation 'com.github.Muki1992:epoxy-base:1.x.x'
+  implementation 'com.airbnb.android:epoxy:3.0.0'
+  kapt 'com.airbnb.android:epoxy-processor:3.0.0'
+  implementation 'com.airbnb.android:epoxy-databinding:3.0.0'
+}
+```
+In order for Kotlin to work properly add to the build.gradle
+```
+apply plugin: 'kotlin-kapt'
+
+kapt {
+    correctErrorTypes = true
 }
 ```
