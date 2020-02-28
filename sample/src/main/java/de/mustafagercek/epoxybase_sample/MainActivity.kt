@@ -34,26 +34,29 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         binding.recyclerView.withModels {
+            textModel("Test",type = Type.TITLE).addTo(this)
+            textModel("Test",type = Type.REGULAR).addTo(this)
+            textModel("Test",type = Type.LIGHT).addTo(this)
 
-            buttonModel("Loading/notLoading", isLoading = isLoading, click = View.OnClickListener {
-                isLoading = !isLoading
-                binding.recyclerView.requestModelBuild()
-                Handler().postDelayed({
-                        isLoading = !isLoading
-                        binding.recyclerView.requestModelBuild()
-                    }, 500
-                )
-            }).addTo(this)
-
-            buttonModel("enabled/notEnabled", isEnabled = isEnabled, click = View.OnClickListener {
-                isEnabled = !isEnabled
-                binding.recyclerView.requestModelBuild()
-                Handler().postDelayed({
-                    isEnabled = !isEnabled
-                    binding.recyclerView.requestModelBuild()
-                }, 500
-                )
-            }).addTo(this)
+//            buttonModel("Loading/notLoading", isLoading = isLoading, click = View.OnClickListener {
+//                isLoading = !isLoading
+//                binding.recyclerView.requestModelBuild()
+//                Handler().postDelayed({
+//                        isLoading = !isLoading
+//                        binding.recyclerView.requestModelBuild()
+//                    }, 500
+//                )
+//            }).addTo(this)
+//
+//            buttonModel("enabled/notEnabled", isEnabled = isEnabled, click = View.OnClickListener {
+//                isEnabled = !isEnabled
+//                binding.recyclerView.requestModelBuild()
+//                Handler().postDelayed({
+//                    isEnabled = !isEnabled
+//                    binding.recyclerView.requestModelBuild()
+//                }, 500
+//                )
+//            }).addTo(this)
 //
 //            textModel("BOLD",typeface = Typeface.BOLD).addTo(this)
 //            textModel("DEFAULT",typeface = Typeface.NORMAL).addTo(this)

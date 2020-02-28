@@ -33,24 +33,25 @@ fun Context.textModel(
     gravity: Int = Gravity.START,
     ts: Float = type?.ts ?: 14f,
     listener: View.OnClickListener? = null,
-    font: Int? = type?.font,
-    typeface: Int = Typeface.NORMAL,
+    textStyle: Int = type?.textStyle ?: Typeface.NORMAL,
     backgroundColor: Int? = null,
     tc: Int = type?.tc ?: R.color.textDefault
 ): TextModel_ {
     val params: LinearLayout.LayoutParams = LinearLayout.LayoutParams(w, h)
     params.setMargins(dpToPx(l), dpToPx(t), dpToPx(r), dpToPx(b))
-    return TextModel_().id(text).backgroundColor(backgroundColor).listener(listener).fontRes(font).textSize(ts)
+    return TextModel_().id(text).backgroundColor(backgroundColor).listener(listener).textSize(ts)
         .text(text).textColor(tc)
         .textGravity(gravity)
-        .typeface(typeface)
+        .textStyle(textStyle)
         .layoutParams(params)
 }
 
-class Type(val ts: Float, val tc: Int, val font: Int? = null) {
+class Type(val ts: Float, val tc: Int, val textStyle: Int) {
     companion object {
-        val TITLE: Type = Type(18f, R.color.textDark, null)
-        val REGULAR: Type = Type(14f, R.color.textDefault, null)
+        val TITLE: Type = Type(18f, R.color.textDark, Typeface.BOLD)
+        val REGULAR: Type = Type(14f, R.color.textDefault,  Typeface.NORMAL)
+        val LIGHT: Type = Type(12f, R.color.textLight,  Typeface.ITALIC)
+
     }
 }
 
@@ -71,20 +72,14 @@ abstract class TextModel : EpoxyModelWithHolder<TextModel.Holder>() {
     var backgroundColor: Int? = null
 
     @EpoxyAttribute
-    var typeface: Int = Typeface.BOLD
+    var textStyle: Int = Typeface.BOLD
 
     @EpoxyAttribute
     var textGravity: Int? = null
 
-    @EpoxyAttribute
-    var fontPath: String? = null
-
     @EpoxyAttribute(EpoxyAttribute.Option.DoNotHash)
     var listener: View.OnClickListener? = null
 
-    @FontRes
-    @EpoxyAttribute
-    var fontRes: Int? = null
 
     @SuppressLint("SetTextI18n")
     override fun bind(holder: Holder) {
@@ -107,17 +102,7 @@ abstract class TextModel : EpoxyModelWithHolder<TextModel.Holder>() {
             holder.textView.gravity = it
         }
 
-        fontPath?.let {
-            val tf = Typeface.createFromAsset(context.assets, fontPath)
-            holder.textView.typeface = tf
-        }
-
-        fontRes?.let {
-            val typeFace = ResourcesCompat.getFont(context, it)
-            holder.textView.typeface = typeFace
-        }
-
-        typeface?.let {
+        textStyle.let {
             holder.textView.setTypeface(holder.textView.typeface,it)
         }
 
