@@ -4,6 +4,8 @@ Often one develops many things twice that one could unify.
 
 This is exactly the basic idea behind epoxy.  This library offers a basic set of epoxy models, which are often used like texts, pictures and buttons. 
 
+![](samplegif.gif)
+
 Prerequisite for the use of these is programming in Kotlin
 
 ## Installation
