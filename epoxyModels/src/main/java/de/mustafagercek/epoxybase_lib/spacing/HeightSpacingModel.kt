@@ -14,10 +14,12 @@ import de.mustafagercek.epoxybase_lib.R
 import de.mustafagercek.epoxybase_lib.R2
 import de.mustafagercek.epoxybase_lib.util.KotlinEpoxyHolder
 import de.mustafagercek.epoxybase_lib.util.dpToPx
+import java.net.URL
+import java.util.*
 
 fun Context.heightSpacing(
     height: Int,
-    id: String
+    id: String = UUID.randomUUID().toString()
 ): HeightSpacingModel_ {
     val params: FrameLayout.LayoutParams =
         FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, dpToPx(height))
